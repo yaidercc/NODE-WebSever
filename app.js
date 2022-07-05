@@ -10,24 +10,24 @@ hbs.registerPartials(__dirname + '/views/partials');
 //servir contenido estatico
 app.use(express.static('public/'))
 
-app.get('/', function (req, res) {
-    // res.sendFile(__dirname+'/public/index.html')
-    res.render('home',{
-        nombre: 'Yaider Cordoba',
-        titulo: 'Curso de Node'
-    })
-});
+// app.get('/', function (req, res) {
+//     // res.sendFile(__dirname+'/public/index.html')
+//     res.render('home',{
+//         nombre: 'Yaider Cordoba',
+//         titulo: 'Curso de Node'
+//     })
+// });
 
-app.get('/Elements', function (req, res) {
-    res.render('elements')
-});
+// app.get('/Elements', function (req, res) {
+//     res.render('elements')
+// });
 
-app.get('/generic', function (req, res) {
-    res.render('generic')
-});
+// app.get('/generic', function (req, res) {
+//     res.render('generic')
+// });
 
 app.get('*', function (req, res) {
-    res.sendFile(__dirname+'/template/404.html')
+    res.sendFile(__dirname+'/public/index.html');
 });
 
 app.listen(port, function () {
