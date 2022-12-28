@@ -1,36 +1,41 @@
-const express = require('express')
-const app = express();
-const hbs = require("hbs");
 require("dotenv").config();
-const port = process.env.PORT;
+const express = require('express')
+const hbs = require('hbs');
+const app = express();
+const port = 5000 || process.env.PORT;
 
-// especificar el template engine que vamos a usar para las vistas
+// Handlebar
 app.set('view engine', 'hbs');
-hbs.registerPartials(__dirname + '/views/partials');
-//servir contenido estatico
-app.use(express.static('public/'))
+hbs.registerPartials(__dirname + '/views/parciales');
 
-// app.get('/', function (req, res) {
-//     // res.sendFile(__dirname+'/public/index.html')
-//     res.render('home',{
-//         nombre: 'Yaider Cordoba',
-//         titulo: 'Curso de Node'
-//     })
-// });
+// Servir contenido estatico
+app.use(express.static("public/"))
 
-// app.get('/Elements', function (req, res) {
-//     res.render('elements')
-// });
+app.get('/', (req, res) => {
+    res.render('home',{
+        nombre: 'Yaider',
+        titulo:" Curso de Node"
+    })
+})
 
-// app.get('/generic', function (req, res) {
-//     res.render('generic')
-// });
+app.get("/hola-mundo", (req, res) => {
+    res.send("hola mundo desde su respectiva ruta.")
+})
 
-app.get('*', function (req, res) {
-    res.sendFile(__dirname+'/public/index.html');
-});
+app.get("/generic", (req, res) => {
+    res.render('generic',{
+        nombre: 'Yaider',
+        titulo:" Curso de Node"
+    })
+})
 
-app.listen(port, function () {
-    console.log(`Example app listeninf at http://localhost:${port}`);
-});
+app.get("/elements", (req, res) => {
+    res.render('elements',{
+        nombre: 'Yaider',
+        titulo:" Curso de Node"
+    })
+})
 
+app.listen(port,()=>{
+    console.log(`Corriendo en la siguiente url http://localhost:${port}`);
+})
