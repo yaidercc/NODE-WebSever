@@ -1,8 +1,8 @@
 require("dotenv").config();
 const express = require('express');
 const hbs = require('hbs');
-const app = express()
-const port = process.env.PORT;
+const app = express();
+const port = 5001;
 // Establecer handlebars para mostrar las vistas
 app.set('view engine', 'hbs');
 hbs.registerPartials(__dirname + '/views/partials');
